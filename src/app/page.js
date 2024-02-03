@@ -6,39 +6,50 @@ export default function Home() {
   return (
     <>
       <>
-        <h2>Blogs</h2>
-        <ul>
+        <h2 className="content-section-title">Blogs</h2>
+        <div className="content-list">
           {blogs.map((blog) => (
-            <li key={blog.id}>
-              <Image
-                src={blog.coverImage}
-                alt={blog.title}
-                width={100}
-                height={100}
-              />
-              {blog.title}
-              {blog.description}
-            </li>
+            <div className="content-item" key={blog.slug}>
+              <div className="content-item__image-container">
+                <Image
+                  src={blog.coverImage}
+                  alt={blog.title}
+                  fill={true}
+                  sizes="(max-width: 768px)"
+                  priority={true}
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="content-item__header">
+                <div>{blog.title}</div>
+                <div>{blog.description}</div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </>
-
       <>
-        <h2>Portfolio</h2>
-        <ul>
+        <h2 className="content-section-title">Portfolio</h2>
+        <div className="content-list">
           {portfolios.map((portfolio) => (
-            <li key={portfolio.slug}>
-              <Image
-                src={portfolio.coverImage}
-                alt={portfolio.title}
-                width={100}
-                height={100}
-              />
-              {portfolio.title}
-              {portfolio.description}
-            </li>
+            <div className="content-item" key={portfolio.slug}>
+              <div className="content-item__image-container">
+                <Image
+                  src={portfolio.coverImage}
+                  alt={portfolio.title}
+                  fill={true}
+                  sizes="(max-width: 768px)"
+                  priority={true}
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="content-item__header">
+                <div>{portfolio.title}</div>
+                <div>{portfolio.description}</div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </>
     </>
   );

@@ -3,6 +3,41 @@
   background-color: black;
   color: white;
 }
-body {
+
+.page-container {
   padding: 200px;
+}
+
+.content-section-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.content-list {
+  display: flex;
+  padding: 10px;
+}
+
+.content-item {
+  width: 300px;
+  display: flex;
+  border: 1px solid grey;
+  margin: 5px;
+  padding: 5px;
+  flex-direction: column;
+}
+
+.content-item__image-container {
+  position: relative;
+  height: 200px;
+}
+.content-item__header {
+  padding: 10px;
+  font-size: 17px;
+}
+
+.content-item__header > div:nth-child(1) {
+  font-weight: bold;
+  font-size: 20px;
 }
