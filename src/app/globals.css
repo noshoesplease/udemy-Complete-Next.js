@@ -1,0 +1,8 @@
+/* dark mode */
+* {
+  background-color: black;
+  color: white;
+}
+body {
+  padding: 200px;
+}
