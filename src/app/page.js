@@ -2,7 +2,7 @@ import { BlogList } from "@/components/blogs/bloglist";
 import { PortfoliosList } from "@/components/portfolios/PortfoliosList";
 
 async function getBlogs() {
-  const response = await fetch("http://localhost:3000/api/blogs", {
+  const response = await fetch("http://localhost:3001/api/blogs", {
     cache: "no-cache",
   });
 
@@ -14,7 +14,7 @@ async function getBlogs() {
 }
 
 async function getPortfolios() {
-  const response = await fetch("http://localhost:3000/api/portfolios", {
+  const response = await fetch("http://localhost:3001/api/portfolios", {
     cache: "no-cache",
   });
 
