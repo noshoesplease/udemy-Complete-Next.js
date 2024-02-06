@@ -1,4 +1,4 @@
-import { BlogList } from "@/components/blogs/bloglist";
+import { BlogList } from "@/components/blogs/BlogList";
 import { PortfoliosList } from "@/components/portfolios/PortfoliosList";
 
 async function getBlogs() {
