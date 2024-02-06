@@ -1,7 +1,10 @@
 import { BlogList } from "@/components/blogs/BlogList";
 import { PortfoliosList } from "@/components/portfolios/PortfoliosList";
+import { delay } from "@/utils";
 
 async function getBlogs() {
+  await delay(4000);
+
   const response = await fetch("http://localhost:3001/api/blogs", {
     /**
      * The `cache` property is used to specify the cache mode of the request.
@@ -23,6 +26,7 @@ async function getBlogs() {
 }
 
 async function getPortfolios() {
+  await delay(1000);
   const response = await fetch("http://localhost:3001/api/portfolios", {
     cache: "no-cache",
   });
@@ -34,14 +38,39 @@ async function getPortfolios() {
   return response.json();
 }
 
-export default async function Home() {
-  // const blogsJson = await getBlogs();
-  // const blogs = blogsJson.data;
-  const { data: blogs } = await getBlogs();
+async function sequential() {
+  const blogs = await getBlogs();
+  const portfolios = await getPortfolios();
+  return { blogs: blogs.data, portfolios: portfolios.data };
+}
 
-  // const portfoliosJson = await getPortfolios();
-  // const portfolios = portfoliosJson.data;
-  const { data: portfolios } = await getPortfolios();
+async function parallel() {
+  const blogsPromise = getBlogs();
+  const portfoliosPromise = getPortfolios();
+  const [blogs, portfolios] = await Promise.all([
+    blogsPromise,
+    portfoliosPromise,
+  ]);
+  return { blogs: blogs.data, portfolios: portfolios.data };
+}
+
+async function timedFetch(fetchStyle) {
+  const timeNow = Date.now();
+  const res = await fetchStyle();
+  const { blogs, portfolios } = res;
+  const timeAfter = Date.now();
+  console.log("Time:", timeAfter - timeNow);
+  return { blogs, portfolios };
+}
+
+export default async function Home() {
+  // const { blogs, portfolios } = await timedFetch(parallel);
+  const { blogs, portfolios } = await parallel();
+
+  // const { blogs, portfolios } = await timedFetch(sequential);
+  // const { blogs, portfolios } = await sequential();
+
+
   return (
     <>
       <BlogList blogs={blogs} />
