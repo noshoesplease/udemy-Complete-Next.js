@@ -3,6 +3,15 @@ import { PortfoliosList } from "@/components/portfolios/PortfoliosList";
 
 async function getBlogs() {
   const response = await fetch("http://localhost:3001/api/blogs", {
+    /**
+     * The `cache` property is used to specify the cache mode of the request.
+     * If we set the value to "no-cache", the server won't cache the request,
+     * meaning that the server will employ server side rendering to generate the
+     * page each time the user requests it. On the other hand, if we set the
+     * value to "default", the server will cache the request, meaning that the
+     * server will only generate the page once during build step, and then serve
+     * the generated page to the user each time the user requests it.
+     */
     cache: "no-cache",
   });
 
