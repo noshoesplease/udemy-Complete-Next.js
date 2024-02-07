@@ -1,6 +1,7 @@
 import { BlogList } from "@/components/blogs/BlogList";
 import { PortfoliosList } from "@/components/portfolios/PortfoliosList";
 import { delay } from "@/utils";
+import { Suspense } from "react";
 
 async function getBlogs() {
   await delay(4000);
@@ -64,12 +65,34 @@ async function timedFetch(fetchStyle) {
 }
 
 export default async function Home() {
-  // const { blogs, portfolios } = await timedFetch(parallel);
-  const { blogs, portfolios } = await parallel();
+  const { blogs, portfolios } = await timedFetch(parallel);
+  // const { blogs, portfolios } = await parallel();
 
   // const { blogs, portfolios } = await timedFetch(sequential);
   // const { blogs, portfolios } = await sequential();
 
+  return (
+    <>
+      <SuspenseHome />
+      {/* <NonSuspenseHome /> */}
+    </>
+  );
+}
+
+const SuspenseHome = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <NonSuspenseHome />
+    </Suspense>
+  );
+};
+
+const NonSuspenseHome = async () => {
+  const { blogs, portfolios } = await timedFetch(parallel);
+  // const { blogs, portfolios } = await parallel();
+
+  // const { blogs, portfolios } = await timedFetch(sequential);
+  // const { blogs, portfolios } = await sequential();
 
   return (
     <>
@@ -77,4 +100,4 @@ export default async function Home() {
       <PortfoliosList portfolios={portfolios} />
     </>
   );
-}
+};
