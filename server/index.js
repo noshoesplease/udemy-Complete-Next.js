@@ -9,8 +9,8 @@ const corsOptions = {
   origin: "http://localhost:3000",
   optionsSuccessStatus: 200,
 };
-app.use(cors(corsOptions));
 
+app.use(cors(corsOptions));
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
@@ -20,12 +20,20 @@ app.get("/", (req, res) => {
   res.status(403).send("Forbidden");
 });
 
-const blogs = require("./content/blogs.json");
+const dataPath = path.join(__dirname, "content");
+
 app.get("/api/blogs", (req, res) => {
+  const blogs = JSON.parse(
+    fs.readFileSync(path.join(dataPath, "blogs.json"), "utf-8")
+  );
+
   res.send({ data: blogs });
 });
 
-const portfolios = require("./content/portfolios.json");
 app.get("/api/portfolios", (req, res) => {
+  const portfolios = JSON.parse(
+    fs.readFileSync(path.join(dataPath, "portfolios.json"), "utf-8")
+  );
+
   res.send({ data: portfolios });
 });
