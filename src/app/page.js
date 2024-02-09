@@ -17,6 +17,24 @@ async function getBlogs() {
      * the generated page to the user each time the user requests it.
      */
     cache: "no-cache",
+
+    next: {
+      /**
+       * The `revalidate` property is used to specify the number of seconds after
+       * which a page revalidation should occur. If we set the value to 2, the
+       * server will revalidate the page every 2 seconds, meaning that the server
+       * will regenerate the page every 2 seconds, and then serve the generated
+       * page to the user each time the user requests it.
+       */
+      revalidate: 2,
+
+      /**
+       * The `tags` property is used to specify the tags of the page. If we set
+       * the value to ["blogs"], the server will only revalidate the page when
+       * the page with the specified tags is modified. If the page with the
+       */
+      tags: ["blogs"],
+    },
   });
 
   if (!response.ok) {
