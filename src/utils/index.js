@@ -48,3 +48,10 @@ export function getMarkownPortfolio() {
 
   return portfolios;
 }
+
+export function getPortfolioBySlug(slug) {
+  return [];
+}
+export function getBlogBySlug(slug) {
+  return [];
+}
