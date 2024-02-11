@@ -2,9 +2,11 @@ import { BlogList } from "@/components/blogs/BlogList";
 import { PortfoliosList } from "@/components/portfolios/PortfoliosList";
 import { delay } from "@/utils";
 import { Suspense } from "react";
+import MarkdownBlogList from "@/components/blogs/MarkdownBlogList";
+import MarkdownPortfoliosList from "@/components/portfolios/MarkdownPortfoliosList";
 
 async function getBlogs() {
-  await delay(4000);
+  // await delay(4000);
 
   const response = await fetch("http://localhost:3001/api/blogs", {
     /**
@@ -45,7 +47,7 @@ async function getBlogs() {
 }
 
 async function getPortfolios() {
-  await delay(1000);
+  // await delay(1000);
   const response = await fetch("http://localhost:3001/api/portfolios", {
     cache: "no-cache",
   });
@@ -83,7 +85,7 @@ async function timedFetch(fetchStyle) {
 }
 
 export default async function Home() {
-  const { blogs, portfolios } = await timedFetch(parallel);
+  // const { blogs, portfolios } = await timedFetch(parallel);
   // const { blogs, portfolios } = await parallel();
 
   // const { blogs, portfolios } = await timedFetch(sequential);
@@ -91,8 +93,13 @@ export default async function Home() {
 
   return (
     <>
-      <SuspenseHome />
-      {/* <NonSuspenseHome /> */}
+      {/* <SuspenseHome /> */}
+      <NonSuspenseHome />
+
+      {/* Markdown Items */}
+
+      <MarkdownBlogList />
+      <MarkdownPortfoliosList />
     </>
   );
 }
