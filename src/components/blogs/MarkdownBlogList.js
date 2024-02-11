@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getMarkdownBlogs } from "@/utils";
+import Link from "next/link";
 
 const MarkdownBlogList = () => {
   const blogs = getMarkdownBlogs();
@@ -22,6 +23,9 @@ const MarkdownBlogList = () => {
             <div className="content-item__header">
               <div>{blog.title}</div>
               <div>{blog.description}</div>
+              <Link href={`/blogs/${blog.slug}`}>
+                See More
+              </Link>
             </div>
           </div>
         ))}

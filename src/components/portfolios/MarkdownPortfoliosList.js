@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getMarkownPortfolio } from "@/utils";
+import Link from "next/link";
 
 const MarkdownPortfoliosList = () => {
   const portfolios = getMarkownPortfolio();
@@ -23,6 +24,9 @@ const MarkdownPortfoliosList = () => {
               <div className="content-item__header">
                 <div>{portfolio.title}</div>
                 <div>{portfolio.description}</div>
+                <Link href={`/portfolios/${portfolio.slug}`}>
+                  See More
+                </Link>
               </div>
             </div>
           ))}

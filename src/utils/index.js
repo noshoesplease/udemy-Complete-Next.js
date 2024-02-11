@@ -25,6 +25,8 @@ export function getMarkdownBlogs() {
     const fileContent = fs.readFileSync(filePath, "utf-8");
 
     const { data, content } = matter(fileContent);
+    data.slug = blogName.replace(/\.md$/, "");
+
     return { ...data, content };
   });
 
@@ -39,6 +41,8 @@ export function getMarkownPortfolio() {
     const fileContent = fs.readFileSync(filePath, "utf-8");
 
     const { data, content } = matter(fileContent);
+    data.slug = portfolioName.replace(".md", "");
+
     return { ...data, content };
   });
 
