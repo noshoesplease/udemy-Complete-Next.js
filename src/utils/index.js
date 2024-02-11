@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs";
+import matter from "gray-matter";
 
 const blogsMarkownPath = path.join(process.cwd(), "src", "content", "blogs");
-
 const portfolisoMarkownPath = path.join(
   process.cwd(),
   "src",
@@ -19,10 +19,28 @@ export async function delay(ms) {
 
 export function getMarkdownBlogs() {
   const blogNames = fs.readdirSync(blogsMarkownPath);
-  return blogNames;
+
+  const blogs = blogNames.map((blogName) => {
+    const filePath = path.join(blogsMarkownPath, blogName);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+
+    const { data, content } = matter(fileContent);
+    return { ...data, content };
+  });
+
+  return blogs;
 }
 
 export function getMarkownPortfolio() {
   const portfolioNames = fs.readdirSync(portfolisoMarkownPath);
-  return portfolioNames;
+
+  const portfolios = portfolioNames.map((portfolioName) => {
+    const filePath = path.join(portfolisoMarkownPath, portfolioName);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+
+    const { data, content } = matter(fileContent);
+    return { ...data, content };
+  });
+
+  return portfolios;
 }

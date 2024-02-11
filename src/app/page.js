@@ -28,7 +28,7 @@ async function getBlogs() {
        * will regenerate the page every 2 seconds, and then serve the generated
        * page to the user each time the user requests it.
        */
-      revalidate: 2,
+      // revalidate: 2,
 
       /**
        * The `tags` property is used to specify the tags of the page. If we set
@@ -80,7 +80,7 @@ async function timedFetch(fetchStyle) {
   const res = await fetchStyle();
   const { blogs, portfolios } = res;
   const timeAfter = Date.now();
-  console.log("Time:", timeAfter - timeNow);
+  // console.log("Time:", timeAfter - timeNow);
   return { blogs, portfolios };
 }
 
