@@ -4,6 +4,7 @@ function BlogDetailPage({ params }) {
   const blog = getBlogBySlug(params.slug);
   return (
     <>
+    
       <h1>Blog Detail Page {params.slug}</h1>
       {blog.length > 0 ? (
         <div>
