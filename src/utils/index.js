@@ -33,7 +33,7 @@ export function getMarkdownBlogs() {
   return blogs;
 }
 
-export function getMarkownPortfolio() {
+export function getMarkownPortfolios() {
   const portfolioNames = fs.readdirSync(portfolisoMarkownPath);
 
   const portfolios = portfolioNames.map((portfolioName) => {
@@ -50,8 +50,37 @@ export function getMarkownPortfolio() {
 }
 
 export function getPortfolioBySlug(slug) {
-  return [];
+  let result = null;
+
+  const markdownPortfolios = getMarkownPortfolios();
+  const portfolio = markdownPortfolios.find((p) => p.slug === slug);
+  if(portfolio){
+    result =  portfolio;
+  }
+  else {
+    const filePath = path.join(process.cwd(), "src", "content", "portfolios.json");
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const portfolios = JSON.parse(fileContent);
+    result = portfolios.find((p) => p.slug === slug);
+  }
+
+  return result;
 }
+
 export function getBlogBySlug(slug) {
-  return [];
+  let result = null;
+
+  const markdownBlogs = getMarkdownBlogs();
+  const blog = markdownBlogs.find((b) => b.slug === slug);
+  if(blog){
+    result =  blog;
+  }
+  else {
+    const filePath = path.join(process.cwd(), "src", "content", "blogs.json");
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const blogs = JSON.parse(fileContent);
+    result = blogs.find((b) => b.slug === slug);
+  }
+  
+  return result;
 }
