@@ -15,6 +15,8 @@ function BlogDetailPage({ params }) {
         <div>
           <h1>{blog.title}</h1>
           <p>{blog.description}</p>
+          <hr />
+          <div>{blog.content}</div>
         </div>
       ) : (
         <div>Blog not found</div>

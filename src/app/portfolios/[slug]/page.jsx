@@ -15,6 +15,8 @@ function PortfolioDetailPage({ params }) {
         <div>
           <h1>{portfolio.title}</h1>
           <p>{portfolio.description}</p>
+          <hr />
+          <div>{portfolio.content}</div>
         </div>
       ) : (
         <div>Portfolio not found</div>
