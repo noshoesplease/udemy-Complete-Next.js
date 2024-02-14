@@ -1,13 +1,14 @@
 import { getPortfolioBySlug, getMarkdownPortfolios } from "@/utils";
 
-export function generateStaticParams() {
-  return getMarkdownPortfolios().map((portfolio) => ({
+export async function generateStaticParams() {
+  const res = await getMarkdownPortfolios();
+  return res.map((portfolio) => ({
     slug: portfolio.slug,
   }));
 }
 
-function PortfolioDetailPage({ params }) {
-  const portfolio = getPortfolioBySlug(params.slug);
+async function PortfolioDetailPage({ params }) {
+  const portfolio = await getPortfolioBySlug(params.slug);
   return (
     <>
       <h1>Portfolio Detail Page {params.slug}</h1>

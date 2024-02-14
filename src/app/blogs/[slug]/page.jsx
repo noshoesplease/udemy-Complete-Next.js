@@ -1,13 +1,14 @@
 import { getBlogBySlug, getMarkdownBlogs } from "@/utils";
 
-export function generateStaticParams() {
-  return getMarkdownBlogs().map((blog) => ({
+export async function generateStaticParams() {
+  const res = await getMarkdownBlogs();
+  return res.map((blog) => ({
     slug: blog.slug
   }));
 }
 
-function BlogDetailPage({ params }) {
-  const blog = getBlogBySlug(params.slug);
+async function BlogDetailPage({ params }) {
+  const blog = await getBlogBySlug(params.slug);
   return (
     <>
       <h1>Blog Detail Page {params.slug}</h1>
