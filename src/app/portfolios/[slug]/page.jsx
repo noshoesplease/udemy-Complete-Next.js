@@ -17,8 +17,8 @@ async function PortfolioDetailPage({ params }) {
           <h1>{portfolio.title}</h1>
           <p>{portfolio.description}</p>
           <hr />
-          <div>{portfolio.content}</div>
-        </div>
+          <div dangerouslySetInnerHTML={{__html: portfolio.content}}></div>
+        </div> 
       ) : (
         <div>Portfolio not found</div>
       )}
