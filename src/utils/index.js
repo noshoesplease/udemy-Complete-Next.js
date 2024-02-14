@@ -3,7 +3,7 @@ import fs from "fs";
 import matter from "gray-matter";
 
 const blogsMarkownPath = path.join(process.cwd(), "src", "content", "blogs");
-const portfolisoMarkownPath = path.join(
+const portfoliosMarkownPath = path.join(
   process.cwd(),
   "src",
   "content",
@@ -34,10 +34,10 @@ export function getMarkdownBlogs() {
 }
 
 export function getMarkownPortfolios() {
-  const portfolioNames = fs.readdirSync(portfolisoMarkownPath);
+  const portfolioNames = fs.readdirSync(portfoliosMarkownPath);
 
   const portfolios = portfolioNames.map((portfolioName) => {
-    const filePath = path.join(portfolisoMarkownPath, portfolioName);
+    const filePath = path.join(portfoliosMarkownPath, portfolioName);
     const fileContent = fs.readFileSync(filePath, "utf-8");
 
     const { data, content } = matter(fileContent);
