@@ -1,4 +1,10 @@
-import { getBlogBySlug } from "@/utils";
+import { getBlogBySlug, getMarkdownBlogs } from "@/utils";
+
+export function generateStaticParams() {
+  return getMarkdownBlogs().map((blog) => ({
+    slug: blog.slug
+  }));
+}
 
 function BlogDetailPage({ params }) {
   const blog = getBlogBySlug(params.slug);

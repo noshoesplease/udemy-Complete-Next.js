@@ -33,7 +33,7 @@ export function getMarkdownBlogs() {
   return blogs;
 }
 
-export function getMarkownPortfolios() {
+export function getMarkdownPortfolios() {
   const portfolioNames = fs.readdirSync(portfoliosMarkownPath);
 
   const portfolios = portfolioNames.map((portfolioName) => {
@@ -52,7 +52,7 @@ export function getMarkownPortfolios() {
 export function getPortfolioBySlug(slug) {
   let result = null;
 
-  const markdownPortfolios = getMarkownPortfolios();
+  const markdownPortfolios = getMarkdownPortfolios();
   const portfolio = markdownPortfolios.find((p) => p.slug === slug);
   if(portfolio){
     result =  portfolio;

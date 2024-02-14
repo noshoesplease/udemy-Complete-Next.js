@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { getMarkownPortfolios } from "@/utils";
+import { getMarkdownPortfolios } from "@/utils";
 import Link from "next/link";
 
 const MarkdownPortfoliosList = () => {
-  const portfolios = getMarkownPortfolios();
+  const portfolios = getMarkdownPortfolios();
   return (
     <>
       <h2 className="content-section-title">Markdown Portfolios</h2>

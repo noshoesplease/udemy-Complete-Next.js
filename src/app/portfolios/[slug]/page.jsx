@@ -1,4 +1,10 @@
-import { getPortfolioBySlug } from "@/utils";
+import { getPortfolioBySlug, getMarkdownPortfolios } from "@/utils";
+
+export function generateStaticParams() {
+  return getMarkdownPortfolios().map((portfolio) => ({
+    slug: portfolio.slug,
+  }));
+}
 
 function PortfolioDetailPage({ params }) {
   const portfolio = getPortfolioBySlug(params.slug);
