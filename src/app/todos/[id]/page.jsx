@@ -32,12 +32,12 @@ const ToDoDetailPage = async ({ params }) => {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const render = (
-    <div>
+    <>
       Todo:
       <Suspense fallback={<div>Loading...</div>}>
         <Todo id={params.id} />
       </Suspense>
-    </div>
+    </>
   );
   return render;
 };

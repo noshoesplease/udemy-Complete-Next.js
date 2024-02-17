@@ -1,4 +1,4 @@
-const ContentPage = ({ params }) => {
+const ContentDetailPage = ({ params }) => {
   /**
    * This is a catch all route that uses Dynamic Segments.
    * Dynamic Segments can be extended to catch-all subsequent
@@ -23,4 +23,4 @@ const ContentPage = ({ params }) => {
   );
 };
 
-export default ContentPage;
+export default ContentDetailPage;

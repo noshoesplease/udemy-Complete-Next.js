@@ -93,13 +93,15 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* <SuspenseHome /> */}
-      <NonSuspenseHome />
+      <div className="home-page-container">
+        {/* <SuspenseHome /> */}
+        <NonSuspenseHome />
 
-      {/* Markdown Items */}
+        {/* Markdown Items */}
 
-      <MarkdownBlogList />
-      <MarkdownPortfoliosList />
+        <MarkdownBlogList />
+        <MarkdownPortfoliosList />
+      </div>
     </>
   );
 }

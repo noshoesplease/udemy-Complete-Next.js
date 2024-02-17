@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className="container">
+        <div className="root-layout-container">
           <Navigation />
           {children}
         </div>
