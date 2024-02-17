@@ -51,6 +51,12 @@ export function Navigation() {
       href: "/magazines",
       text: "Magazines",
     },
+    {
+      isActive: pathName.includes("/summary"),
+      href: "/summary",
+      text: "Summary",
+      
+    }
   ];
 
   const render = (
