@@ -22,6 +22,12 @@
   background-color: rgb(43, 122, 226);
 }
 
+.print-media-page-container {
+  padding: 200px;
+  margin: 10px;
+  background-color: rgb(202, 226, 43);
+}
+
 .content-detail-page-container {
   padding: 200px;
   margin: 10px;
