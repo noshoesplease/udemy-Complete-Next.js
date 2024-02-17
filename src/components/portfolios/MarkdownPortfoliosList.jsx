@@ -2,14 +2,15 @@ import Image from "next/image";
 import { getMarkdownPortfolios } from "@/utils";
 import Link from "next/link";
 
-const MarkdownPortfoliosList = () => {
-  const portfolios = getMarkdownPortfolios();
+const MarkdownPortfoliosList = async () => {
+  const portfolios = await getMarkdownPortfolios();
+  
   return (
     <>
       <h2 className="content-section-title">Markdown Portfolios</h2>
       <div className="content-list">
         {portfolios &&
-          portfolios.map((portfolio,index) => (
+          portfolios.map((portfolio, index) => (
             <div className="content-item" key={index}>
               <div className="content-item__image-container">
                 <Image
@@ -24,9 +25,7 @@ const MarkdownPortfoliosList = () => {
               <div className="content-item__header">
                 <div>{portfolio.title}</div>
                 <div>{portfolio.description}</div>
-                <Link href={`/portfolios/${portfolio.slug}`}>
-                  See More
-                </Link>
+                <Link href={`/portfolios/${portfolio.slug}`}>See More</Link>
               </div>
             </div>
           ))}
