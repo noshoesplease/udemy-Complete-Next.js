@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export function Navigation() {
   const pathName = usePathname();
+  const router = useRouter();
   const render = (
     <>
       <ul className="navigation-list">
@@ -14,19 +15,40 @@ export function Navigation() {
           </Link>
         </li>
         <li className="navigation-item">
-          <Link className={`link${pathName.includes('/blogs') ? " active" : ""}`} href="/blogs">
+          <Link
+            className={`link${pathName.includes("/blogs") ? " active" : ""}`}
+            href="/blogs"
+          >
             Blogs
           </Link>
         </li>
         <li className="navigation-item">
-          <Link className={`link${pathName.includes('/portfolios') ? " active" : ""}`} href="/portfolios">
+          <Link
+            className={`link${
+              pathName.includes("/portfolios") ? " active" : ""
+            }`}
+            href="/portfolios"
+          >
             Portfolios
           </Link>
         </li>
         <li className="navigation-item">
-          <Link className={`link${pathName.includes('/todos')  ? " active" : ""}`} href="/todos">
+          <Link
+            className={`link${pathName.includes("/todos") ? " active" : ""}`}
+            href="/todos"
+          >
             Todos
           </Link>
+        </li>
+        <li className="navigation-item">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            Go Home
+          </button>
         </li>
       </ul>
     </>
