@@ -84,7 +84,7 @@ async function timedFetch(fetchStyle) {
   return { blogs, portfolios };
 }
 
-export default async function Home() {
+export default async function HomePage() {
   // const { blogs, portfolios } = await timedFetch(parallel);
   // const { blogs, portfolios } = await parallel();
 
